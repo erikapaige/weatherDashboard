@@ -155,6 +155,7 @@ document.getElementById('searchWeather').addEventListener('click', event => {
 })
 
 
+
 function searchCity(city) {
   //fetching the weather information from the
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=89c540c6e55003d691ce0c7d883474f3`)
@@ -206,6 +207,76 @@ function searchCity(city) {
     })
 }
 
-//5 day forecast
+//local storage city at index 0
+function localStorage() {
+localStorage.setItem('dayOne','name')
+
+for (i = 0; i < localStorage.length; i++)
+  // let pastCity= document.getElementById('pastSearch')
+
+  pastCityElem = document.createElement('div')
+  pastCityElem.className = 'card'
+  pastCityElem.style = 'width: 18 rem;'
+  pastCityElem.innerHTML = `
+      <div class="card-body">
+        </ul class="list-group">
+          <li class="list-group-item active">
+            ${localStorage.getItem[0]}
+          </li>
+          <li class="list-group-item">
+            ${localStorage.getItem[1]}
+          </li>
+          <li class="list-group-item">
+            ${localStorage.getItem[2]}
+          </li>
+          <li class="list-group-item">
+            ${localStorage.getItem[3]}
+          </li>  
+          <li class="list-group-item">
+            ${localStorage.getItem[4]}
+          </li>  
+        </ul>
+      </div>
+      `
+
+  document.getElementById('pastSearch').append(pastCityElem)
+
+}
+
+
+//LOCAL STORAGE ATTEMPT 1make the searched cities save and clickable
+
+// localStorage.setItem(localStorage.length,'name')
+
+// for (i = 0; i < localStorage.length; i++)
+//   // let pastCity= document.getElementById('pastSearch')
+
+//   pastCityElem = document.createElement('div')
+//   pastCityElem.className = 'card'
+//   pastCityElem.style = 'width: 18 rem;'
+//   pastCityElem.innerHTML = `
+//       <div class="card-body">
+//         </ul class="list-group">
+//           <li class="list-group-item active">
+//             ${localStorage.getItem[0]}
+//           </li>
+//           <li class="list-group-item">
+//             ${localStorage.getItem[1]}
+//           </li>
+//           <li class="list-group-item">
+//             ${localStorage.getItem[2]}
+//           </li>
+//           <li class="list-group-item">
+//             ${localStorage.getItem[3]}
+//           </li>  
+//           <li class="list-group-item">
+//             ${localStorage.getItem[4]}
+//           </li>  
+//         </ul>
+//       </div>
+//       `
+  
+//   document.getElementById('pastSearch').append(pastCityElem)
+
 
 

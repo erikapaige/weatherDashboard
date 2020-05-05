@@ -152,19 +152,51 @@ document.getElementById('searchWeather').addEventListener('click', event => {
   //returning the fifth day in 5 day weather forecast to the new div
   fifthForecast()
 
+  // //local storage city at index 0
+  // localStorage.setItem('localStorage', 'input')
+
+  // for (i = 0; i < localStorage.length; i++)
+  //   // let pastCity= document.getElementById('pastSearch')
+
+  //   pastCityElem = document.createElement('div')
+  // pastCityElem.className = 'card'
+  // pastCityElem.style = 'width: 18 rem;'
+  // pastCityElem.innerHTML = `
+  //     <div class="card-body">
+  //       </ul class="list-group">
+  //         <li class="list-group-item active">
+  //           ${localStorage.getItem[0]}
+  //         </li>
+  //         <li class="list-group-item">
+  //           ${localStorage.getItem[1]}
+  //         </li>
+  //         <li class="list-group-item">
+  //           ${localStorage.getItem[2]}
+  //         </li>
+  //         <li class="list-group-item">
+  //           ${localStorage.getItem[3]}
+  //         </li>  
+  //         <li class="list-group-item">
+  //           ${localStorage.getItem[4]}
+  //         </li>  
+  //       </ul>
+  //     </div>
+  //     `
+
+  // document.getElementById('pastSearch').append(pastCityElem)
 
 })
 
-
+//function that renders the "search"
 function searchCity(city) {
-  //fetching the weather information from the
+  //fetching the weather information from the input
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=89c540c6e55003d691ce0c7d883474f3`)
     .then(r => r.json())
     .then(currentWeather => {
       //keep console.log to go back and see offered weather conditions
       console.log(currentWeather)
 
-      //fetching the coordinates that created the UV index
+      //fetching the coordinates that will create the UV index
       lat = currentWeather.coord.lat
       long = currentWeather.coord.lon
       fetch(`http://api.openweathermap.org/data/2.5/uvi?appid=89c540c6e55003d691ce0c7d883474f3&lat=${lat}&lon=${long}`)
@@ -182,8 +214,11 @@ function searchCity(city) {
 
           //creating new element that includes searched city
           let currentWeatherElem = document.createElement('div')
+          //adding class of card to new element
           currentWeatherElem.className = 'card'
+          //adding styling attributes to new element
           currentWeatherElem.style = 'width: 18 rem;'
+          //formatting HTML of new element
           currentWeatherElem.innerHTML = `
           <h5 class="card-header">
           ${currentWeather.name} (${currentTime}) <span><img src=http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png></span>
@@ -207,6 +242,74 @@ function searchCity(city) {
     })
 }
 
-//5 day forecast
 
 
+// //local storage city at index 0
+//   localStorage.setItem('name')
+
+//   for (i = 0; i < localStorage.length; i++)
+//     // let pastCity= document.getElementById('pastSearch')
+
+//     pastCityElem = document.createElement('div')
+//   pastCityElem.className = 'card'
+//   pastCityElem.style = 'width: 18 rem;'
+//   pastCityElem.innerHTML = `
+//       <div class="card-body">
+//         </ul class="list-group">
+//           <li class="list-group-item active">
+//             ${localStorage.getItem[0]}
+//           </li>
+//           <li class="list-group-item">
+//             ${localStorage.getItem[1]}
+//           </li>
+//           <li class="list-group-item">
+//             ${localStorage.getItem[2]}
+//           </li>
+//           <li class="list-group-item">
+//             ${localStorage.getItem[3]}
+//           </li>  
+//           <li class="list-group-item">
+//             ${localStorage.getItem[4]}
+//           </li>  
+//         </ul>
+//       </div>
+//       `
+
+//   document.getElementById('pastSearch').append(pastCityElem)
+
+// }
+
+
+//LOCAL STORAGE ATTEMPT 1make the searched cities save and clickable
+
+// localStorage.setItem(localStorage.length,'name')
+
+// for (i = 0; i < localStorage.length; i++)
+//   // let pastCity= document.getElementById('pastSearch')
+
+//   pastCityElem = document.createElement('div')
+//   pastCityElem.className = 'card'
+//   pastCityElem.style = 'width: 18 rem;'
+//   pastCityElem.innerHTML = `
+//       <div class="card-body">
+//         </ul class="list-group">
+//           <li class="list-group-item active">
+//             ${localStorage.getItem[0]}
+//           </li>
+//           <li class="list-group-item">
+//             ${localStorage.getItem[1]}
+//           </li>
+//           <li class="list-group-item">
+//             ${localStorage.getItem[2]}
+//           </li>
+//           <li class="list-group-item">
+//             ${localStorage.getItem[3]}
+//           </li>  
+//           <li class="list-group-item">
+//             ${localStorage.getItem[4]}
+//           </li>  
+//         </ul>
+//       </div>
+//       `
+
+//   document.getElementById('pastSearch').append(pastCityElem)

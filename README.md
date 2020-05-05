@@ -26,3 +26,10 @@ There are 4 Javascript files that can be found in the 'script-libraries' folder.
 "forlooptest" is the "trial and error" script page. If something new needed to be added or attempted it was done here, then transferred to "script.js."
 
 All 4 libraries are linked in the script tags on HTML. 
+
+
+NOTES FOR GRADER
+Local storage was attempted and can be seen at the bottom of the "script.js." Thinking process behind it:
+-Make local storage an array
+-Using a for loop (with .lenght would allow storage to contract based on the number of searches)
+-Creating a new list element then appending the values of the index to each element
