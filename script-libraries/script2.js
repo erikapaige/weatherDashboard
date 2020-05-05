@@ -7,15 +7,9 @@ let long = ''
 document.getElementById('searchWeather').addEventListener('click', event => {
   event.preventDefault()
   console.log(document.getElementById('name').value)
-  let input = document.getElementById('name').value
 
-  // calling on the function that returns the value of the input
-  searchCity(input)
-})
-
-function searchCity(city) {
-  //fetching the weather informatino from the
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=89c540c6e55003d691ce0c7d883474f3`)
+  //fetching the weather information from the input
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${document.getElementById('name').value}&units=imperial&APPID=89c540c6e55003d691ce0c7d883474f3`)
     .then(r => r.json())
     .then(currentWeather => {
       //keep console.log to go back and see offered weather conditions
@@ -58,9 +52,8 @@ function searchCity(city) {
 
           //returns the value of the searched city
           document.getElementById('currentWeather').append(currentWeatherElem)
-        })
-
+        }) 
     })
+})
 
-}
 
