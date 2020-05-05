@@ -2,6 +2,7 @@
 const currentTime = (moment().format('MM [/] DD [/] YYYY'))
 let lat = ''
 let long = ''
+let days = ["mon", "tues", "wed", "thurs", "fri", "sat", "sun"]
 
 //function that makes the search button retreive weather from the searched city
 document.getElementById('searchWeather').addEventListener('click', event => {
@@ -14,7 +15,10 @@ document.getElementById('searchWeather').addEventListener('click', event => {
       .then(r => r.json())
       .then(data => {
         console.log(data)
-        
+        //loop for 5 day forecast
+        // for (let i=0; i < days.length; i++)
+
+
       })
       .catch(e => { console.log(e) })
   }
@@ -22,7 +26,6 @@ document.getElementById('searchWeather').addEventListener('click', event => {
 
   // calling on the function that returns the value of the input
   searchCity(input)
-
 
 })
 
@@ -74,7 +77,7 @@ function searchCity(city) {
           //returns the value of the searched city
           document.getElementById('currentWeather').append(currentWeatherElem)
         })
-      
+
     })
 }
 
