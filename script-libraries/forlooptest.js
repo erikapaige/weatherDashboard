@@ -59,6 +59,30 @@ document.getElementById('searchWeather').addEventListener('click', event => {
   }
   secondForecast()
 
+  // third day in five day forecast
+  function thirdForecast() {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&units=imperial&appid=89c540c6e55003d691ce0c7d883474f3`)
+      .then(r => r.json())
+      .then(dayThree => {
+        console.log(dayThree)
+
+        // creating the div to show first day
+        let dayThreeElem = document.createElement('div')
+        dayThreeElem.className = 'card'
+        dayThreeElem.style = 'width: 6rem;'
+        dayThreeElem.innerHTML = `
+          <h6 class="card-subtitle mb-2 text-muted"><img src=http://openweathermap.org/img/w/${dayThree.list[0].weather[0].icon}.png></h6>
+          <p>${dayThree.list[2].main.temp}°F </p>
+          <p>${dayThree.list[2].main.humidity}% </p>
+        `
+        //return value of first day in 5 day weather forecast
+        document.getElementById('dayThree').append(dayThreeElem)
+      })
+      .catch(e => { console.log(e) })
+  }
+  thirdForecast()
+
+
 })
 
 
