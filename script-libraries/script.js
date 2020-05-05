@@ -9,19 +9,148 @@ document.getElementById('searchWeather').addEventListener('click', event => {
   console.log(document.getElementById('name').value)
   let input = document.getElementById('name').value
 
-  function forecast() {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=89c540c6e55003d691ce0c7d883474f3`)
+  // calling on the function that returns the value of the input
+  searchCity(input)
+
+  // first day in five day forecast
+  function firstForecast() {
+    //fetching API for five day forecast
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&units=imperial&appid=89c540c6e55003d691ce0c7d883474f3`)
       .then(r => r.json())
-      .then(data => {
-        console.log(data)
-        
+      .then(dayOne => {
+        console.log(dayOne)
+
+        // creating a new div to show first day
+        let dayOneElem = document.createElement('div')
+        //adding class of card to new element
+        dayOneElem.className = 'card'
+        //adding styling attributes to new element
+        dayOneElem.style = 'width: 6rem;'
+        //formatting HTML of new element, index goes up by to call new day
+        dayOneElem.innerHTML = `
+          <h6 class="card-subtitle mb-2 text-muted"><img src=http://openweathermap.org/img/w/${dayOne.list[0].weather[0].icon}.png></h6>
+          <p>${dayOne.list[0].main.temp}°F </p>
+          <p>${dayOne.list[0].main.humidity}%</p>
+        `
+        //merging the newly created element to the ID on HTML
+        document.getElementById('dayOne').append(dayOneElem)
       })
       .catch(e => { console.log(e) })
   }
-  forecast()
+  //returning the first day in 5 day weather forecast to the new div
+  firstForecast()
 
-  // calling on the function that returns the value of the input
-  searchCity(input)
+  // second day in five day forecast
+  function secondForecast() {
+    //fetching API for five day forecast
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&units=imperial&appid=89c540c6e55003d691ce0c7d883474f3`)
+      .then(r => r.json())
+      .then(dayTwo => {
+        console.log(dayTwo)
+
+        // creating new div to show second day
+        let dayTwoElem = document.createElement('div')
+        //adding class of card to new element
+        dayTwoElem.className = 'card'
+        //adding styling attributes to new element
+        dayTwoElem.style = 'width: 6rem;'
+        //formatting HTML of new element, index goes up by to call new day
+        dayTwoElem.innerHTML = `
+          <h6 class="card-subtitle mb-2 text-muted"><img src=http://openweathermap.org/img/w/${dayTwo.list[1].weather[0].icon}.png></h6>
+          <p>${dayTwo.list[1].main.temp}°F </p>
+          <p>${dayTwo.list[1].main.humidity}% </p>
+        `
+        //merging the newly created element to the ID on HTML
+        document.getElementById('dayTwo').append(dayTwoElem)
+      })
+      .catch(e => { console.log(e) })
+  }
+  //returning the second day in 5 day weather forecast to the new div
+  secondForecast()
+
+  // third day in five day forecast
+  function thirdForecast() {
+    //fetching API for five day forecast
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&units=imperial&appid=89c540c6e55003d691ce0c7d883474f3`)
+      .then(r => r.json())
+      .then(dayThree => {
+        console.log(dayThree)
+
+        // creating new div to show third day
+        let dayThreeElem = document.createElement('div')
+        //adding class of card to new element
+        dayThreeElem.className = 'card'
+        //adding styling attributes to new element
+        dayThreeElem.style = 'width: 6rem;'
+        //formatting HTML of new element, index goes up by to call new day
+        dayThreeElem.innerHTML = `
+          <h6 class="card-subtitle mb-2 text-muted"><img src=http://openweathermap.org/img/w/${dayThree.list[2].weather[0].icon}.png></h6>
+          <p>${dayThree.list[2].main.temp}°F </p>
+          <p>${dayThree.list[2].main.humidity}% </p>
+        `
+        //merging the newly created element to the ID on HTML
+        document.getElementById('dayThree').append(dayThreeElem)
+      })
+      .catch(e => { console.log(e) })
+  }
+  //returning the thrid day in 5 day weather forecast to the new div
+  thirdForecast()
+
+  // fourth day in five day forecast
+  function fourthForecast() {
+    //fetching API for five day forecast
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&units=imperial&appid=89c540c6e55003d691ce0c7d883474f3`)
+      .then(r => r.json())
+      .then(dayFour => {
+        console.log(dayFour)
+
+        // creating new div to show fourth day
+        let dayFourElem = document.createElement('div')
+        //adding class of card to new element
+        dayFourElem.className = 'card'
+        //adding styling attributes to new element
+        dayFourElem.style = 'width: 6rem;'
+        //formatting HTML of new element, index goes up by to call new day
+        dayFourElem.innerHTML = `
+          <h6 class="card-subtitle mb-2 text-muted"><img src=http://openweathermap.org/img/w/${dayFour.list[3].weather[0].icon}.png></h6>
+          <p>${dayFour.list[3].main.temp}°F </p>
+          <p>${dayFour.list[3].main.humidity}% </p>
+        `
+        //merging the newly created element to the ID on HTML
+        document.getElementById('dayFour').append(dayFourElem)
+      })
+      .catch(e => { console.log(e) })
+  }
+  //returning the fourth day in 5 day weather forecast to the new div
+  fourthForecast()
+
+  // fifth day in five day forecast
+  function fifthForecast() {
+    //fetching API for five day forecast
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&units=imperial&appid=89c540c6e55003d691ce0c7d883474f3`)
+      .then(r => r.json())
+      .then(dayFive => {
+        console.log(dayFive)
+
+        // creating new div to show fifth day
+        let dayFiveElem = document.createElement('div')
+        //adding class of card to new element
+        dayFiveElem.className = 'card'
+        //adding styling attributes to new element
+        dayFiveElem.style = 'width: 6rem;'
+        //formatting HTML of new element, index goes up by to call new day
+        dayFiveElem.innerHTML = `
+          <h6 class="card-subtitle mb-2 text-muted"><img src=http://openweathermap.org/img/w/${dayFive.list[4].weather[0].icon}.png></h6>
+          <p>${dayFive.list[4].main.temp}°F </p>
+          <p>${dayFive.list[4].main.humidity}% </p>
+        `
+        //merging the newly created element to the ID on HTML
+        document.getElementById('dayFive').append(dayFiveElem)
+      })
+      .catch(e => { console.log(e) })
+  }
+  //returning the fifth day in 5 day weather forecast to the new div
+  fifthForecast()
 
 
 })

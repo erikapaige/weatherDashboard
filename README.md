@@ -15,12 +15,14 @@ This weather dashboard allows users to search using the ‘search city’ bar. O
 NOTES FOR OTHER DEVELOPERS
 The dashboard was built using Bootstrap's grid system. This is linked under the <head> tag at the beginning of the document. 
 
-There are 3 Javascript files that can be found in the 'script-libraries' folder. The names of the three files are: script.js, script2.js and Moment.js
+There are 4 Javascript files that can be found in the 'script-libraries' folder. The names of the three files are: script.js, script2.js, forlooptest.js and Moment.js
 
 "script.js" is the primary Javascript code. It is written vanilla javascript. 
 
-"script2.js" is the back up code, stored while working on the document as refernce. (This code is always working)
+"script2.js" is the origional code, before turning search(City) into a function
 
 "Moment.js" is a time styling library. It is how the weather display provides the current date.
 
-All 3 libraries are linked in the script tags on HTML. If you prefer to use vanilla Javascript.
+"forlooptest" is the "trial and error" script page. If something new needed to be added or attempted it was done here, then transferred to "script.js."
+
+All 4 libraries are linked in the script tags on HTML. 
