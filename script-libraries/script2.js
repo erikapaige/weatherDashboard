@@ -8,6 +8,7 @@ document.getElementById('searchWeather').addEventListener('click', event => {
   event.preventDefault()
   console.log(document.getElementById('name').value)
 
+
   //fetching the weather information from the input
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${document.getElementById('name').value}&units=imperial&APPID=89c540c6e55003d691ce0c7d883474f3`)
     .then(r => r.json())
@@ -54,6 +55,7 @@ document.getElementById('searchWeather').addEventListener('click', event => {
           document.getElementById('currentWeather').append(currentWeatherElem)
         }) 
     })
-})
+  })
+
 
 

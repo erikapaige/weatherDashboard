@@ -14,7 +14,7 @@ document.getElementById('searchWeather').addEventListener('click', event => {
 })
 
 function searchCity(city) {
-  //fetching the weather informatino from the
+  //fetching the weather information from the
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=89c540c6e55003d691ce0c7d883474f3`)
     .then(r => r.json())
     .then(currentWeather => {
@@ -59,8 +59,14 @@ function searchCity(city) {
           //returns the value of the searched city
           document.getElementById('currentWeather').append(currentWeatherElem)
         })
-
+      
     })
-
 }
 
+//5 day forecast
+  fetch(`api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=89c540c6e55003d691ce0c7d883474f3`)
+    .then(r => r.json())
+    .then(fiveDay => { 
+      console.log('test')
+      
+    })
