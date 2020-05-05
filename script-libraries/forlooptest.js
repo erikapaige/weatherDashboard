@@ -10,22 +10,54 @@ document.getElementById('searchWeather').addEventListener('click', event => {
   console.log(document.getElementById('name').value)
   let input = document.getElementById('name').value
 
-  function forecast() {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=89c540c6e55003d691ce0c7d883474f3`)
+  // calling on the function that returns the value of the input
+  searchCity(input)
+
+  // first day in five day forecast
+  function firstForecast() {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&units=imperial&appid=89c540c6e55003d691ce0c7d883474f3`)
       .then(r => r.json())
-      .then(data => {
-        console.log(data)
-        //loop for 5 day forecast
-        // for (let i=0; i < days.length; i++)
+      .then(dayOne => {
+        console.log(dayOne)
 
-
+        // creating the div to show first day
+        let dayOneElem = document.createElement('div')
+        dayOneElem.className = 'card'
+        dayOneElem.style= 'width: 6rem;'
+        dayOneElem.innerHTML= `
+          <h6 class="card-subtitle mb-2 text-muted"><img src=http://openweathermap.org/img/w/${dayOne.list[0].weather[0].icon}.png></h6>
+          <p>${dayOne.list[0].main.temp}°F </p>
+          <p>${dayOne.list[0].main.humidity}%</p>
+        `
+        //return value of first day in 5 day weather forecast
+        document.getElementById('dayOne').append(dayOneElem)
       })
       .catch(e => { console.log(e) })
   }
-  forecast()
+  firstForecast()
 
-  // calling on the function that returns the value of the input
-  searchCity(input)
+  // second day in five day forecast
+  function secondForecast() {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&units=imperial&appid=89c540c6e55003d691ce0c7d883474f3`)
+      .then(r => r.json())
+      .then(dayTwo => {
+        console.log(dayTwo)
+
+        // creating the div to show first day
+        let dayTwoElem = document.createElement('div')
+        dayTwoElem.className = 'card'
+        dayTwoElem.style = 'width: 6rem;'
+        dayTwoElem.innerHTML = `
+          <h6 class="card-subtitle mb-2 text-muted"><img src=http://openweathermap.org/img/w/${dayTwo.list[0].weather[0].icon}.png></h6>
+          <p>${dayTwo.list[1].main.temp}°F </p>
+          <p>${dayTwo.list[1].main.humidity}% </p>
+        `
+        //return value of first day in 5 day weather forecast
+        document.getElementById('dayTwo').append(dayTwoElem)
+      })
+      .catch(e => { console.log(e) })
+  }
+  secondForecast()
 
 })
 
