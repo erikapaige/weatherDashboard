@@ -1,13 +1,27 @@
+$(document).ready(function () {
+  
+
+let cities = localStorage.getItem
+("cityweather")
 //below gives the current time and date
 const currentTime = (moment().format('MM [/] DD [/] YYYY'))
 let lat = ''
 let long = ''
+let history = []
+
+if (!history) {
+  history = []
+} else {
+ // history = JSON.parse(history)
+}
+console.log("history: ", history)
 
 //function that makes the search button retreive weather from the searched city
 document.getElementById('searchWeather').addEventListener('click', event => {
   event.preventDefault()
   console.log(document.getElementById('name').value)
   let input = document.getElementById('name').value
+
 
   // calling on the function that returns the value of the input
   searchCity(input)
@@ -25,9 +39,9 @@ document.getElementById('searchWeather').addEventListener('click', event => {
         //adding class of card to new element
         dayOneElem.className = 'card'
         //adding styling attributes to new element
-        dayOneElem.style= 'width: 6rem;'
+        dayOneElem.style = 'width: 6rem;'
         //formatting HTML of new element, index goes up by to call new day
-        dayOneElem.innerHTML= `
+        dayOneElem.innerHTML = `
           <h6 class="card-subtitle mb-2 text-muted"><img src=http://openweathermap.org/img/w/${dayOne.list[0].weather[0].icon}.png></h6>
           <p>${dayOne.list[0].main.temp}°F </p>
           <p>${dayOne.list[0].main.humidity}%</p>
@@ -158,6 +172,16 @@ document.getElementById('searchWeather').addEventListener('click', event => {
 
 function searchCity(city) {
   //fetching the weather information from the
+  // aplpha = [a,b,c,d]
+  // alpha.indexOf("z")  ===> -1
+  // local storage
+  if (history.indexOf(city) === -1) {
+    history.push(city)
+    window.localStorage.setItem("cityweather", JSON.stringify(history))
+  }
+  //
+
+
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=89c540c6e55003d691ce0c7d883474f3`)
     .then(r => r.json())
     .then(currentWeather => {
@@ -208,13 +232,15 @@ function searchCity(city) {
 }
 
 //local storage city at index 0
+
+
 function localStorage() {
-localStorage.setItem('dayOne','name')
+  localStorage.setItem('dayOne', 'name')
 
-for (i = 0; i < localStorage.length; i++)
-  // let pastCity= document.getElementById('pastSearch')
+  for (i = 0; i < localStorage.length; i++)
+    // let pastCity= document.getElementById('pastSearch')
 
-  pastCityElem = document.createElement('div')
+    pastCityElem = document.createElement('div')
   pastCityElem.className = 'card'
   pastCityElem.style = 'width: 18 rem;'
   pastCityElem.innerHTML = `
@@ -275,8 +301,11 @@ for (i = 0; i < localStorage.length; i++)
 //         </ul>
 //       </div>
 //       `
-  
+
 //   document.getElementById('pastSearch').append(pastCityElem)
 
 
 
+
+
+})
